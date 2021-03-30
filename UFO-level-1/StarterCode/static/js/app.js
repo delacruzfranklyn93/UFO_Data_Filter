@@ -76,26 +76,44 @@ function run(){
     // prevent the page from refreshing
     d3.event.preventDefault();
 
-    // use d3 to select the input box
-    var inputElement = d3.select('#datetime');
+    // use d3 to select the input boxes
+    var inputDate = d3.select('#datetime').property('value');
+    var inputCity = d3.select('#city').property('value');
+    var inputState = d3.select('#state').property('value');
+    var inputCountry = d3.select('#country').property('value');
+    var inputShape = d3.select('#shape').property('value');
 
-    //save the input value  into a new variable
-    var inputValue = inputElement.property('value');
+    // save the input values  into a new array for a for loop
+    var filters = [inputDate, inputCity, inputState, inputCountry, inputShape];
+
+    // To do create the for loop that filters the data with each variable entered
+    filters.forEach(filter => {
+
+    })
+    // if (inputValue == null || inputValue == ''){
+    //     console.log(inputDate)
+    // }
+    console.log(filters);
+   
+
     
     //filter the data by the date given and store in a variable
-    var filteredData = sightings.filter(sighting => sighting.datetime === inputValue);
+    var filteredData = sightings.filter(sighting => sighting.city === inputValue);
 
     // remove the current table rows to create room for the filtered data
-    tbody.remove('tr');
+  
+    tbody.html("")
+  
 
     // call your table function above to append the new table data
-    filteredData.forEach(data => {
-        var row = tbody.append('tr');
-        Object.entries(data).forEach(([key, value]) => {
-            var cell = row.append('td');
-            cell.text(value);
-        })
-    })
+    filteredData.forEach(tableFormation)
+    // filteredData.forEach(data => {
+    //     var row = tbody.append('tr');
+    //     Object.entries(data).forEach(([key, value]) => {
+    //         var cell = row.append('td');
+    //         cell.text(value);
+    //     })
+    // })
 
     console.log(filteredData)
 };
