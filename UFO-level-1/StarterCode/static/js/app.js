@@ -4,7 +4,7 @@ var tableData = data;
 // YOUR CODE HERE!
 var tbody = d3.select("tbody");
 
-console.log(tableData)
+// console.log(tableData)
 
 // Step 1: Loop Through `data` and console.log each weather report object
 // tableData.forEach(data => {
@@ -60,7 +60,7 @@ tableData.forEach(tableFormation)
 // })
 
 // Assign the data from `data.js` to a descriptive variable
-var sightings = tableData;
+var filteredData = tableData;
 
 // Select  the button 
 var  button = d3.select('#filter-btn');
@@ -85,20 +85,42 @@ function run(){
 
     // save the input values  into a new array for a for loop
     var filters = [inputDate, inputCity, inputState, inputCountry, inputShape];
+    // x = []
+    // Object.entries(data).forEach(([key,value]) => {
+    //     x.push((Object.values(value)))
 
-    // To do create the for loop that filters the data with each variable entered
-    filters.forEach(filter => {
-
-    })
-    // if (inputValue == null || inputValue == ''){
-    //     console.log(inputDate)
+    // });
+    // if (filters in x){
+    //     console.log(x)
     // }
-    console.log(filters);
-   
+    // console.log(x)
 
-    
-    //filter the data by the date given and store in a variable
-    var filteredData = sightings.filter(sighting => sighting.city === inputValue);
+  
+    // create the for loop that filters the data with each variable entered
+    var filteredData = data
+     filters.forEach(filter => {
+        if (filter !== null || filter !== ''){
+            if ((filteredData.some(sighting => sighting.datetime == filter)) == true){
+                filteredData = filteredData.filter(sighting => sighting.datetime == filter);
+                console.log(filteredData)
+            }
+            else if ((filteredData.some(sighting => sighting.city == filter)) == true){
+                filteredData = filteredData.filter(sighting => sighting.city == filter);
+                console.log(filteredData)
+            }
+            else if ((filteredData.some(sighting => sighting.state == filter)) == true){
+                filteredData = filteredData.filter(sighting => sighting.state == filter);
+                console.log(filteredData)
+            }
+            else if ((filteredData.some(sighting => sighting.country == filter)) == true){
+                filteredData = filteredData.filter(sighting => sighting.country == filter);
+               
+            }
+            else if ((filteredData.some(sighting => sighting.shape == filter)) == true){
+                filteredData = filteredData.filter(sighting => sighting.shape == filter);
+            }
+        }
+    });
 
     // remove the current table rows to create room for the filtered data
   
@@ -107,15 +129,15 @@ function run(){
 
     // call your table function above to append the new table data
     filteredData.forEach(tableFormation)
-    // filteredData.forEach(data => {
-    //     var row = tbody.append('tr');
-    //     Object.entries(data).forEach(([key, value]) => {
-    //         var cell = row.append('td');
-    //         cell.text(value);
-    //     })
-    // })
+    // // filteredData.forEach(data => {
+    // //     var row = tbody.append('tr');
+    // //     Object.entries(data).forEach(([key, value]) => {
+    // //         var cell = row.append('td');
+    // //         cell.text(value);
+    // //     })
+    // // })
 
-    console.log(filteredData)
+    // console.log(filteredData)
 };
 
 
