@@ -84,7 +84,6 @@ function run(){
     // call your table function above to append the new table data
     filteredData.forEach(tableFormation)
  
-    // console.log(filteredData)
 };
 
 
