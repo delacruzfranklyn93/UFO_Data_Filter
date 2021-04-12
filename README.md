@@ -14,5 +14,6 @@ Deployable Link: https://delacruzfranklyn93.github.io/UFO_Data_Filter/index.html
 
 3)	Lastly, I created event handlers that would execute the function I created to filter and append the new data, so that when the filter button is clicked the new filtered data would be outputted. 
 
+![image](https://user-images.githubusercontent.com/63375741/114476868-1a7c0800-9bc9-11eb-9ee1-8c46a0b0d657.png)
 
 
